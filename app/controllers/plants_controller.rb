@@ -1,4 +1,7 @@
 class PlantsController < ApplicationController
+  before_action :set_plant, only: [:show, :edit, :update]
+
+
   def index
   end
 
@@ -16,4 +19,13 @@ class PlantsController < ApplicationController
 
   def create
   end
+
+private
+
+  def set_plant
+    @plant = Plant.find(params[:id])
+  end
+
+  def plant_params
+    params.require(:plant).permit()
 end
