@@ -1,6 +1,9 @@
 class PlantsController < ApplicationController
   before_action :set_plant, only: [:show, :edit, :update]
+
+
   def index
+    @plants = Plant.all
   end
 
   def show
@@ -26,4 +29,5 @@ private
 
   def plant_params
     params.require(:plant).permit(:title, :height, :color, :description, :localisation)
+  end
 end
