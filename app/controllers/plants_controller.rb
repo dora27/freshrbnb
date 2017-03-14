@@ -43,7 +43,7 @@ private
   end
 
   def plant_params
-    params.require(:plant).permit(:name, :height, :description, :location, :photo, :price)
+    params.require(:plant).permit(:name, :height, :description, :location, :price, :photo, :photo_cache)
   end
 
 end
