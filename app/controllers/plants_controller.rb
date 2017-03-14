@@ -6,9 +6,17 @@ class PlantsController < ApplicationController
   end
 
   def show
+    @plant = Plant.find(params[:id])
+    @plants = Plant.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@plants_path) do |plant, marker|
+      marker.lat plant.latitude
+      marker.lng plant.longitude
+    end
   end
 
   def new
+    @plant = Plant.new
   end
 
   def update
@@ -29,4 +37,5 @@ private
   def plant_params
     params.require(:plant).permit(:name, :height, :description, :location, :photo)
   end
+
 end

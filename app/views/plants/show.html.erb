@@ -1,2 +1,65 @@
-<h1>Plants#show</h1>
-<p>Find me in app/views/plants/show.html.erb</p>
+<div class="media">
+  <div class="media-body">
+    <div class="media-section">
+      <h2>Name: <%= @plant.title %> </h2>
+      <%= cl_image_tag("610sD5Zp-nL._SL1000__s6xr0b",
+      width: 400, scale: :fit) %>
+    </div>
+    <div class="media-section">
+        <div class="product-category">Height: <%= @plant.height%></div>
+    </div>
+    <div class="media-section">
+      <h3>Description:</h3>
+      <p><%= @plant.description %></p>
+    </div>
+  </div>
+
+  <div class="media-aside">
+    <div class="media-section">
+    <div class="card">
+    <div class="product-category"><h2>Price: <%= @plant.price%></h2> </div>
+    <%= link_to "Book this plant", "", class: "btn btn-primary btn-lg" %>
+    </div>
+    </div>
+    <div class="media-section">
+      <h3>Localization</h3>
+        <div id="map" style="width: 100%; height: 400px;"></div>
+        <% content_for(:after_js) do %>
+          <%= javascript_tag do %>
+          $(document).ready(function() {
+          var handler = Gmaps.build('Google');
+          handler.buildMap({ internal: { id: 'map' } }, function() {
+          markers = handler.addMarkers(<%= raw @hash.to_json %>);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+          if (markers.length == 0) {
+            handler.getMap().setZoom(2);
+          } else if (markers.length == 1) {
+            handler.getMap().setZoom(14);
+            }
+          });
+        });
+       <% end %>
+       <% end %>
+      </div>
+    <div class="media-section">
+      <h3>Share</h3>
+      <div class="share-links">
+        <a href="#" class="share-link bg-facebook">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <a href="#" class="share-link bg-twitter">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a href="#" class="share-link bg-email">
+          <i class="fa fa-envelope-o"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- @plant.image_id -->
+
+
