@@ -9,9 +9,7 @@
 
 
 # Plant
-n = 0
 20.times do
-  n +=1
   user = User.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -29,7 +27,7 @@ n = 0
     height: Random.rand(500),
     location: Faker::Pokemon.location,
     description: Faker::StarWars.quote,
-    user_id: n
+    user_id: User.all.last.id
     )
   plant.photo_url = url
   plant.save!
