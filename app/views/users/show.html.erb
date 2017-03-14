@@ -5,36 +5,41 @@
       <h1><%= @user.first_name %> <%= @user.last_name %></h1>
       <p> <%= @user.birthday %>  </p>
       <p> <%= @user.email %> </p>
-      <p> <%= @user.plants.first.title %> </p>
     </div>
   </div>
 
   <div class="container">
+
     <div class="row">
       <div class="profile-my-annonces col-xs-12 col-md-6">
-        <%= @user.plants.each do |plant| %>
+        <h1> My Annonces</h1>
+        <% @user.plants.each do |plant| %>
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('background.jpg');">
             <div class="card-category">Plant</div>
             <div class="card-description">
               <h2><%= plant.name %> </h2>
+              <p> <%= plant.height %> </p>
               <p> <%= plant.price %> </p>
             </div>
-            <img class="card-user avatar" src="user.jpg">
+            <img class="card-user avatar" src="plant.photo">
             <a class="card-link" href="#" ></a>
           </div>
         <% end %>
       </div>
 
       <div class="profile-my-bookings col-xs-12 col-md-6">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('background.jpg');">
-          <div class="card-category">Popular</div>
-          <div class="card-description">
-            <h2>Some stuff</h2>
-            <p>Very cool stuff, useful and smart</p>
+        <h1> My Bookings</h1>
+        <% @user.bookings.each do |booking| %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('background.jpg');">
+            <div class="card-category">Booking</div>
+            <div class="card-description">
+              <h2><%= booking.plants.name %></h2>
+              <p><%= booking.created_at %> </p>
+            </div>
+            <img class="card-user avatar" src="booking.plants.photo">
+            <a class="card-link" href="#" ></a>
           </div>
-          <img class="card-user avatar" src="user.jpg">
-          <a class="card-link" href="#" ></a>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
