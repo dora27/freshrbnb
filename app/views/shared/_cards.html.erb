@@ -1,0 +1,31 @@
+<div class="card-wrapper">
+<h1 style="text-align:center">Nature is everywhere</h1>
+  <div class="container">
+    <div class="row">
+    <% @plants.each do |plant| %>
+      <% if plant.photo %>
+      <div class="col-xs-12 col-md-6 col-lg-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path plant.photo.path %>')">
+          <div class="card-category">
+            <%= plant.height + " cm" %>
+          </div>
+          <div class="card-description">
+            <h2><%= plant.description %></h2>
+          </div>
+            <%= image_tag "http://lorempixel.com/400/400/people/#{rand(10) + 1}", class: "card-user avatar-large" %>
+            <%= link_to "", plant_path(plant), class: "card-link" %>
+          </div>
+
+        <div class="card-title">
+          <%= link_to plant_path(plant), class: "card-title" do %>
+          <%= "#{plant.price}€ | " %><em><%= plant.name + ", "%></em><%= plant.location %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+   </div>
+  </div>
+</div>
+
+
