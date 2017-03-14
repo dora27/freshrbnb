@@ -1,6 +1,6 @@
 .card {
-  margin-top : 30px;
-  height: 200px;
+  margin-top : 20px;
+  height: 220px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   color: white;
@@ -24,7 +24,7 @@
   left: 10px;
 }
 .card-description h2 {
-  font-size: 20px;
+  font-size: 16px;
   padding-bottom: 8px;
 }
 .card-description p {
@@ -45,15 +45,14 @@
 }
 
 .card-wrapper {
-  height: calc(100vh - 70px);
-  background-size: cover !important;
-  background:linear-gradient(0deg, #FFEEEE, #DDEFBB) no-repeat center center fixed;
+  background-color: #FFFFEE;
 }
 
 .card-title {
   margin-top: 12px;
   color: black;
-  font-size: 20px;
+  font-size: 18px;
+  text-align: center;
   font-family: Cairo;
 
 }
@@ -66,5 +65,5 @@
 
 .card-wrapper h1 {
   text-align:center;
-
+  padding-top: 10px;
 }
