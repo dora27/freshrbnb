@@ -26,6 +26,14 @@ class PlantsController < ApplicationController
   end
 
   def create
+    @plant = Plant.new(plant_params)
+    @plant.user = User.find(current_user.id)
+
+      if @plant.save
+        redirect_to plant_path(@plant)
+      else
+        render :new
+      end
   end
 
 private
@@ -35,7 +43,7 @@ private
   end
 
   def plant_params
-    params.require(:plant).permit(:name, :height, :description, :location, :photo)
+    params.require(:plant).permit(:name, :height, :description, :location, :photo, :price)
   end
 
 end
