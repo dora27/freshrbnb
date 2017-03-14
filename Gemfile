@@ -16,7 +16,6 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'devise'
-gem 'simple_form'
 
 #cloudinary
 gem 'cloudinary', '1.1.7'
