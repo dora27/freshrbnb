@@ -12,11 +12,11 @@
               <div class="card-description">
                 <p><%= plant.description %></p>
               </div>
-              <img class="card-user avatar" src="uhttps://pbs.twimg.com/profile_images/378800000644789989/ce8d603ebd257ab15721e9c8f71718d4_400x400.jpeg">
+              <img class="card-user avatar" src="https://pbs.twimg.com/profile_images/378800000644789989/ce8d603ebd257ab15721e9c8f71718d4_400x400.jpeg">
             <a class="card-link" href="#" ></a>
           </div>
           <div class="card-title">
-            <%= "#{plant.price.round(0)}€" + " | " %><em><%= plant.title %></em><%= ", " + plant.localisation %>
+            <%= "#{plant.price}€" + " | " %><em><%= plant.name %></em><%= ", " + plant.location %>
           </div>
       </div>
       <% end %>
