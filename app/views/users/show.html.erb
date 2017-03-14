@@ -14,16 +14,20 @@
       <div class="profile-my-annonces col-xs-12 col-md-6">
         <h1> My Annonces</h1>
         <% @user.plants.each do |plant| %>
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('background.jpg');">
+        <div class="col-xs-12">
+          <div class="card"
+            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path plant.photo.path, height: 300, width: 400, crop: :fill %>')">
             <div class="card-category">Plant</div>
             <div class="card-description">
               <h2><%= plant.name %> </h2>
-              <p> <%= plant.height %> </p>
-              <p> <%= plant.price %> </p>
+              <p> <%= plant.height %> cm </p>
+              <p> <%= plant.price %> € </p>
             </div>
-            <img class="card-user avatar" src="plant.photo">
+            <img class="card-user avatar" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('avatar.jpg')">
             <a class="card-link" href="#" ></a>
           </div>
+        </div>
         <% end %>
       </div>
 
