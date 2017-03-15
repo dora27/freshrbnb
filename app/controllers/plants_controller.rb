@@ -1,18 +1,25 @@
 class PlantsController < ApplicationController
   before_action :set_plant, only: [:show, :edit, :update]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @plants = Plant.all
+    # @plants = Plant.all
+    @plants = Plant.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@plants) do |plant, marker|
+      marker.lat plant.latitude
+      marker.lng plant.longitude
+    end
   end
 
   def show
     @plant = Plant.find(params[:id])
     @plants = Plant.where.not(latitude: nil, longitude: nil)
-
     @hash = Gmaps4rails.build_markers(@plants_path) do |plant, marker|
       marker.lat plant.latitude
       marker.lng plant.longitude
     end
+    @booking = Booking.new
   end
 
   def new

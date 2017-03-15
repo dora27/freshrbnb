@@ -1,11 +1,12 @@
 <div class="media">
-  <div class="media-body">
+
+  <div class="media-body navbar-marged">
     <div class="media-section">
       <h1>Name: <%= @plant.name %> </h1>
       <%= cl_image_tag @plant.photo.path, width: 600, height: 450, crop: :fill %>
     </div>
     <div class="media-section">
-        <div class="product-category">Height: <%= @plant.height + "cm"%></div>
+        <div class="product-category"><%= @plant.height + "cm"%></div>
     </div>
     <div class="media-section">
       <h3>Description:</h3>
@@ -13,12 +14,16 @@
     </div>
   </div>
 
-  <div class="media-aside">
+  <div class="media-aside navbar-marged">
     <div class="media-section">
-    <div class="card">
-    <div class="product-category"><h2>Price: <%= @plant.price%></h2> </div>
-    <%= link_to "Book this plant", "", class: "btn btn-primary btn-lg" %>
-    </div>
+        <h2><%= @plant.price%> €</h2>
+        <div class="product-category form-book">
+        <%= simple_form_for [@plant, @booking] do |f| %>
+          <%= f.input :pick_up %>
+          <%= f.input :bring_back %>
+          <%= f.submit "Book", class: "btn-treehouse"%>
+        <% end %>
+        </div>
     </div>
     <div class="media-section">
       <h3>Location</h3>
@@ -38,9 +43,9 @@
             }
           });
         });
+        <% end %>
        <% end %>
-       <% end %>
-      </div>
+    </div>
     <div class="media-section">
       <h3>Share</h3>
       <div class="share-links">
@@ -54,7 +59,6 @@
           <i class="fa fa-envelope-o"></i>
         </a>
       </div>
-
     </div>
   </div>
 </div>
