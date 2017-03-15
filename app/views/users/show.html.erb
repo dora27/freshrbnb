@@ -1,5 +1,5 @@
 
-<div class="profil">
+<div class="profile">
   <div class="leading">
     <div class="row">
       <h1><%= @user.first_name %> <%= @user.last_name %></h1>
@@ -34,13 +34,14 @@
       <div class="profile-my-bookings col-xs-12 col-md-6">
         <h1> My Bookings</h1>
         <% @user.bookings.each do |booking| %>
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('background.jpg');">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path booking.plant.photo.path, height: 300, width: 400, crop: :fill %>')">
             <div class="card-category">Booking</div>
             <div class="card-description">
-              <h2><%= booking.plants.name %></h2>
+              <h2><%= booking.plant.name %></h2>
               <p><%= booking.created_at %> </p>
             </div>
-            <img class="card-user avatar" src="booking.plants.photo">
+            <img class="card-user avatar" src="avatar.jpg">
             <a class="card-link" href="#" ></a>
           </div>
         <% end %>
