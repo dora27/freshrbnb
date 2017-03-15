@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+Plant.destroy_all
+User.destroy_all
 
 # Plant
 20.times do
@@ -20,7 +22,8 @@
     )
   user.save!
 
-  url = "http://lorempixel.com/1000/1000/nature"
+  url = "https://source.unsplash.com/collection/404339"
+  sleep 2
   plant = Plant.new(
     name: Faker::Pokemon.name,
     price: Random.rand(100),
@@ -33,3 +36,4 @@
   plant.save!
 end
 
+puts "Seed OK"
