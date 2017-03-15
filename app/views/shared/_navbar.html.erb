@@ -28,7 +28,8 @@
       <%# end %> -->
 
       <!-- Dashboard text link -->
-      <%= link_to "Dashboard", user_path(current_user.id), class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Add a plant", new_plant_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Profile", user_path(current_user.id), class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
@@ -36,12 +37,12 @@
           <%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
+              <%= link_to user_path(current_user.id) do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
+              <%= link_to  root_path do %>
                 <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
               <% end %>
             </li>

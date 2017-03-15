@@ -1,67 +1,80 @@
-<div class="media">
+<div class="container navbar-marged">
+  <div class="row show-plant">
 
-  <div class="media-body navbar-marged">
-    <div class="media-section">
-      <h1>Name: <%= @plant.name %> </h1>
-      <%= cl_image_tag @plant.photo.path, width: 600, height: 450, crop: :fill %>
+    <div class="col-xs-12 col-md-3">
+      <%= cl_image_tag @plant.photo.path, width: 250, height: 500, crop: :fill %>
     </div>
-    <div class="media-section">
-        <div class="product-category"><%= @plant.height + "cm"%></div>
-    </div>
-    <div class="media-section">
-      <h3>Description:</h3>
-      <p><%= @plant.description %></p>
-    </div>
-  </div>
 
-  <div class="media-aside navbar-marged">
-    <div class="media-section">
-        <h2><%= @plant.price%> €</h2>
-        <div class="product-category form-book">
+    <div class="col-xs-12 col-md-6">
+      <div class="description-plant">
+        <h3><%= @plant.name  %> <%= @plant.price%> €</h3>
+        <i class="fa fa-long-arrow-up" aria-hidden="true">  <%= @plant.height + "cm"%>  </i>
+        <br>
+        <br>
+        <i class="fa fa-book" aria-hidden="true">  <%= @plant.description %> </i>
+        <br>
+        <br>
+        <i class="fa fa-map-marker" aria-hidden="true">  <%= @plant.location %> </i>
+        <br>
+        <br>
+      </div>
+      <div class="map-plant">
+        <div id="map" style="width: 100%; height: 270px;"></div>
+          <% content_for(:after_js) do %>
+            <%= javascript_tag do %>
+            $(document).ready(function() {
+            var handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function() {
+            markers = handler.addMarkers(<%= raw @hash.to_json %>);
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+            if (markers.length == 0) {
+              handler.getMap().setZoom(2);
+            } else if (markers.length == 1) {
+              handler.getMap().setZoom(14);
+              }
+            });
+          });
+          <% end %>
+         <% end %>
+       </div>
+      <div class="share">
+        <div class="share-links text-center">
+        <br>
+          <a href="#" class="share-link bg-facebook">
+            <i class="fa fa-facebook"></i>
+          </a>
+          <a href="#" class="share-link bg-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+          <a href="#" class="share-link bg-email">
+            <i class="fa fa-envelope-o"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-3" style= "height:78vh">
+      <div class="form-book">
         <%= simple_form_for [@plant, @booking] do |f| %>
-          <%= f.input :pick_up %>
-          <%= f.input :bring_back %>
+          <%= f.input :pick_up, placeholder: "dd/mm/yyyy" %>
+          <%= f.input :bring_back, placeholder: "dd/mm/yyyy" %>
           <%= f.submit "Book", class: "btn-treehouse"%>
         <% end %>
-        </div>
-    </div>
-    <div class="media-section">
-      <h3>Location</h3>
-        <div id="map" style="width: 100%; height: 400px;"></div>
-        <% content_for(:after_js) do %>
-          <%= javascript_tag do %>
-          $(document).ready(function() {
-          var handler = Gmaps.build('Google');
-          handler.buildMap({ internal: { id: 'map' } }, function() {
-          markers = handler.addMarkers(<%= raw @hash.to_json %>);
-          handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
-          if (markers.length == 0) {
-            handler.getMap().setZoom(2);
-          } else if (markers.length == 1) {
-            handler.getMap().setZoom(14);
-            }
-          });
-        });
-        <% end %>
-       <% end %>
-    </div>
-    <div class="media-section">
-      <h3>Share</h3>
-      <div class="share-links">
-        <a href="#" class="share-link bg-facebook">
-          <i class="fa fa-facebook"></i>
-        </a>
-        <a href="#" class="share-link bg-twitter">
-          <i class="fa fa-twitter"></i>
-        </a>
-        <a href="#" class="share-link bg-email">
-          <i class="fa fa-envelope-o"></i>
-        </a>
       </div>
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
 
 <!-- @plant.image_id -->
 
