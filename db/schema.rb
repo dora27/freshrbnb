@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170314110108) do
+ActiveRecord::Schema.define(version: 20170315120517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 20170314110108) do
     t.string   "name"
     t.string   "height"
     t.string   "location"
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["user_id"], name: "index_plants_on_user_id", using: :btree
   end
 

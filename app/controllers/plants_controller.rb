@@ -2,7 +2,13 @@ class PlantsController < ApplicationController
   before_action :set_plant, only: [:show, :edit, :update]
 
   def index
-    @plants = Plant.all
+    # @plants = Plant.all
+    @plants = Plant.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@plants) do |plant, marker|
+      marker.lat plant.latitude
+      marker.lng plant.longitude
+    end
   end
 
   def show
