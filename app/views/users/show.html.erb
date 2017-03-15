@@ -2,10 +2,18 @@
 <div class="profile">
   <div class="leading">
     <div class="row navbar-marged">
-      <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-      <p> <%= @user.birthday %>  </p>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <%= cl_image_tag @user.photo.path, class: "avatar-very-large" %>
+        </div>
+        <div class="col-lg-6">
+          <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+          <p> <%= @user.birthday %>  </p>
+          <p> <%= @user.email %> </p>
+        </div>
     </div>
-  </div>
 
   <div class="container">
 
