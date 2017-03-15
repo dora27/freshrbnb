@@ -18,7 +18,7 @@
 
         <div class="card-title">
           <%= link_to plant_path(plant), class: "card-title" do %>
-          <%= "#{plant.price}€ | " %><em><%= plant.name + ", "%></em><%= plant.location %>
+          <p><%= "#{plant.price}€ | " %><em><%= plant.name + ", "%></em><%= plant.location %></p>
           <% end %>
         </div>
       </div>
