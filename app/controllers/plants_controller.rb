@@ -3,7 +3,13 @@ class PlantsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @plants = Plant.all
+    # @plants = Plant.all
+    @plants = Plant.where.not(latitude: nil, longitude: nil)
+
+    @hash = Gmaps4rails.build_markers(@plants) do |plant, marker|
+      marker.lat plant.latitude
+      marker.lng plant.longitude
+    end
   end
 
   def show

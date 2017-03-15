@@ -1,14 +1,19 @@
 <div class="navbar-marged">
 <h1 style="text-align:center">Nature is everywhere</h1>
-  <div class="container">
-    <div class="row">
-    <% @plants.each do |plant| %>
-      <% if plant.photo %>
-        <div class="col-xs-12 col-md-6 col-lg-4">
-          <%= render 'shared/card', plant: plant %>
-        </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-7">
+      <div class="row">
+      <% @plants.each do |plant| %>
+        <% if plant.photo %>
+          <div class="col-xs-12 col-lg-6">
+            <%= render 'shared/card', plant: plant %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-   </div>
+     </div>
+  </div>
+  <div class="col-lg-5 no-padding">
+    <%= render 'shared/googlemap' %>
   </div>
 </div>
