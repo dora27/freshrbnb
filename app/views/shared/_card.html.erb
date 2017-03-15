@@ -5,7 +5,9 @@
   <div class="card-description">
     <h2><%= plant.description %></h2>
   </div>
-  <%= cl_image_tag plant.user.photo.path, height: 50, width: 50, crop: :fill,  class: "card-user avatar-large" %>
+
+  <%= cl_image_tag plant.user.photo.path, class: "avatar-very-large" %>
+  
   <%= link_to "", plant_path(plant), class: "card-link" %>
 </div>
 
