@@ -11,9 +11,9 @@ Plant.destroy_all
 User.destroy_all
 
 # Plant
-20.times do
-  url = "https://source.unsplash.com/collections/580685"
-  sleep 2
+10.times do
+  url = "https://source.unsplash.com/collection/580685"
+  sleep 1
   user = User.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -22,15 +22,16 @@ User.destroy_all
     description: Faker::ChuckNorris.fact,
     password: "zzzzzz"
     )
+  user.photo_url = url
   user.save!
 
   url = "https://source.unsplash.com/collection/404339"
-  sleep 2
+  sleep 1
   plant = Plant.new(
     name: Faker::Pokemon.name,
     price: Random.rand(100),
     height: Random.rand(500),
-    location: Faker::Pokemon.location,
+    location: Faker::Address.city,
     description: Faker::StarWars.quote,
     user_id: User.all.last.id
     )
