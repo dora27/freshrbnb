@@ -1,35 +1,15 @@
-.card{
-  display: flex;
-  flex: 40 10 80%;
-  align-items: center;
-  justify-content: space-between;
+.description-plant i{
+  font-size: 21px;
+}
+.show-plant{
+  margin: 20px 0px;
 }
 
-.media {
-  display: flex;
-}
-.media-body {
-  flex: 1 1 auto;
-  padding: 20px;
-}
-.media-aside {
-  flex: 0 0 500px;
-  padding: 30px;
-  align-self: stretch;
-  background: #F8F7F7;
-  border-left: 1px solid #f0efef;
-}
-.media-section {
-  margin: 40px auto;
-}
-.media-section:first-child {
-  margin-top: 0;
-}
-.media-section:last-child {
-  margin-bottom: 0;
-}
-
+// Links
 .share-links {
+  display: flex;
+  align-items: center;
+  margin: 10px 0px;
   display: flex;
   align-items: center;
 
@@ -59,8 +39,6 @@
   background: #3b5998;
 }
 
-
-
 .form-book{
   color: $green;
   font-size: 18px;
@@ -68,5 +46,10 @@
   border: 3px solid #f0efef;
   display: flex;
   align-items: center;
-
+  background: #EBEBEB;
 }
+
+.form-book-col{
+  background-color: #EBEBEB;
+}
+
