@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   def create
     @plant = Plant.find(params[:plant_id])
+    @plant.update(status: "Rented")
     @user = User.find(current_user.id)
     @booking = Booking.new(booking_params)
     @booking.user = @user
