@@ -96,3 +96,21 @@
   margin: 10px;
   border: 1px solid green;
 }
+
+// Status
+
+#status {
+  text-align: right;
+  font-size: 18px;
+  position: absolute;
+  right: 35px;
+  bottom: 3px;
+}
+
+#available {
+  color: green;
+}
+
+#rented {
+  color: red;
+}

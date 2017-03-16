@@ -7,7 +7,7 @@
    <h2>Date of birth: <%= @user.birthday %></h2>
   </div>
 
-  <div class="container tab-content hidden" id="plants">
+  <div class="container tab-content active" id="plants">
     <div class="container">
       <div class="row">
         <% @user.plants.each do |plant| %>
@@ -15,7 +15,9 @@
             <div class="wrapper-plant-infos container-fluid">
               <div class="row">
                 <div class="col-lg-3 no-padding">
+                  <%= link_to plant_path do %>
                   <%= cl_image_tag plant.photo.path, width:150, height:150, crop: :fill, class: "img-circle" %>
+                  <% end %>
                 </div>
                 <div class="col-lg-9 no-padding">
                   <h1><%= plant.name %></h1>
@@ -24,6 +26,14 @@
                     <p><i class="fa fa-map-marker"> <%= plant.location %></i></p>
                 </div>
               </div>
+              <p id="status">
+                <em>Status:</em>
+                <% if plant.status == "Available" %>
+                  <span id="available"><%= plant.status %></span>
+                <% else %>
+                  <span id="rented"><%= plant.status %></span>
+                <% end %>
+              </p>
             </div>
           </div>
         <% end %>
@@ -32,7 +42,7 @@
   </div>
 
 
-  <div class="container tab-content" id="bookings">
+  <div class="container tab-content hidden" id="bookings">
     <div class="container">
       <div class="row">
         <% @user.bookings.each do |booking| %>
