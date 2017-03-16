@@ -1,16 +1,19 @@
 <div class="navbar-marged">
-<h1 style="text-align:center">Nature is everywhere</h1>
+<h1 class ="title-index" style="text-align:center">Nature is everywhere</h1>
+<% unless params[:where] == "" %>
+<h2 lass ="title-index" style="text-align:center"> near <%= params[:where] %> </h2>
+<% end %>
 <div class="container-fluid">
   <div class="row">
     <div class="col-lg-7">
       <div class="row">
       <% @plants.each do |plant| %>
-        <% if plant.photo %>
-          <div class="col-xs-12 col-lg-6">
-            <%= render 'shared/card', plant: plant %>
-          </div>
+          <% if plant.photo %>
+            <div class="col-xs-12 col-lg-6">
+              <%= render 'shared/card', plant: plant %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
      </div>
   </div>
   <div class="col-lg-5 no-padding">

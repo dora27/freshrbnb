@@ -17,7 +17,9 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'devise'
 gem 'faker'
-
+source "https://rails-assets.org" do
+  gem 'rails-assets-bootstrap-datepicker'
+end
 #cloudinary
 gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
