@@ -1,61 +1,11 @@
-
-<div class="profile">
-  <div class="leading">
-    <div class="row navbar-marged">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3">
-          <%= cl_image_tag @user.photo.path, class: "avatar-very-large" %>
-        </div>
-        <div class="col-lg-6">
-          <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-          <p> <%= @user.birthday %>  </p>
-          <p> <%= @user.email %> </p>
-        </div>
-      </div>
+<div class="profile-header-wrapper navbar-marged">
+  <div class="container profile-header-container text-center">
+    <div class="profile-header-infos">
+      <%= render 'profile-info' %>
     </div>
-
-  <div class="container">
-
-    <div class="row">
-      <div class="profile-my-annonces col-xs-12 col-md-6">
-        <h1> My Annonces</h1>
-        <% @user.plants.each do |plant| %>
-        <div class="col-xs-12">
-          <div class="card"
-            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-         url('<%= cl_image_path plant.photo.path, height: 300, width: 400, crop: :fill %>')">
-            <div class="card-category">Plant</div>
-            <div class="card-description">
-              <h2><%= plant.name %> </h2>
-              <p> <%= plant.height %> cm </p>
-              <p> <%= plant.price %> € </p>
-            </div>
-            <img class="card-user avatar" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('avatar.jpg')">
-            <a class="card-link" href="#" ></a>
-          </div>
-        </div>
-        <% end %>
-      </div>
-
-      <div class="profile-my-bookings col-xs-12 col-md-6">
-        <h1> My Bookings</h1>
-        <% @user.bookings.each do |booking| %>
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-         url('<%= cl_image_path booking.plant.photo.path, height: 300, width: 400, crop: :fill %>')">
-            <div class="card-category">Booking</div>
-            <div class="card-description">
-              <h2><%= booking.plant.name %></h2>
-              <p><%= booking.created_at %> </p>
-            </div>
-            <img class="card-user avatar" src="avatar.jpg">
-            <a class="card-link" href="#" ></a>
-          </div>
-        <% end %>
-      </div>
-    </div>
+    <%= render 'tabs' %>
   </div>
 </div>
 
-
+<%= render 'tab-content' %>
 

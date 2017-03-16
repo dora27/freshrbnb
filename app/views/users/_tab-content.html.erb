@@ -1,0 +1,63 @@
+<div class="container-fluid text-center">
+
+  <div class="tab-content hidden" id="infos">
+   <h2>First name: <%= @user.first_name %></h2>
+   <h2>Last name: <%= @user.last_name %></h2>
+   <h2>Email: <%= @user.email %></h2>
+   <h2>Date of birth: <%= @user.birthday %></h2>
+  </div>
+
+  <div class="container tab-content hidden" id="plants">
+    <div class="container">
+      <div class="row">
+        <% @user.plants.each do |plant| %>
+          <div class="col-lg-6">
+            <div class="wrapper-plant-infos container-fluid">
+              <div class="row">
+                <div class="col-lg-3 no-padding">
+                  <%= cl_image_tag plant.photo.path, width:150, height:150, crop: :fill, class: "img-circle" %>
+                </div>
+                <div class="col-lg-9 no-padding">
+                  <h1><%= plant.name %></h1>
+                    <p><i class="fa fa-long-arrow-up"> <%= plant.height + "cm"%></i></p>
+                    <p><i class="fa fa-book"> <%= plant.description %></i></p>
+                    <p><i class="fa fa-map-marker"> <%= plant.location %></i></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container tab-content" id="bookings">
+    <div class="container">
+      <div class="row">
+        <% @user.bookings.each do |booking| %>
+          <% plant = booking.plant %>
+          <div class="col-lg-6">
+            <div class="wrapper-plant-infos container-fluid">
+              <div class="row">
+                <div class="col-lg-3 no-padding">
+                  <%= cl_image_tag plant.photo.path, width:150, height:150, crop: :fill, class: "img-circle" %>
+                </div>
+                <div class="col-lg-9 no-padding">
+                  <h1><%= plant.name %></h1>
+                    <p><i class="fa fa-long-arrow-up"> <%= plant.height + "cm"%></i></p>
+                    <p><i class="fa fa-book"> <%= plant.description %></i></p>
+                    <p><i class="fa fa-map-marker"> <%= plant.location %></i></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
