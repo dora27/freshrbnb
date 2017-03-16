@@ -3,11 +3,11 @@
     <div class="banner-content">
     <h1 id="title">Fresh Rbnb</h1>
     <p>Book a plant, reconnect with the Nature</p>
-      <form action="/plants" method="get" class= "search-bar-home">
-        <input type="text" name ="name" class = "search-bar-home-input" placeholder="Kind of plant">
-        <input type="text" name= "when" class = "search-bar-home-input" placeholder="When">
-        <input type="text" name= "where" class = "search-bar-home-input" placeholder="Where">
-        <input type="submit" class="btn-treehouse">
+      <form action="/plants" method="get" class= "form-inline search-bar-home">
+        <input type="text" name ="name" class = "form-control search-bar-home-input" placeholder="Kind of plant">
+        <input type="text" name= "when" class = "form-control search-bar-home-input" placeholder="When" data-provide='datepicker'>
+        <input type="text" name= "where" id = "plant_address" class = "form-control search-bar-home-input" placeholder="Where">
+        <input type="submit" class="form-control btn-treehouse">
       </form>
     </div>
   </div>
