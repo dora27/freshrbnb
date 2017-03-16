@@ -1,9 +1,20 @@
+<%= content_for(:title) do %>
+Fresh Rbnb - <%= @plant.name %>
+<% end %>
+
 <div class="media">
 
   <div class="media-body navbar-marged">
     <div class="media-section">
       <h1>Name: <%= @plant.name %> </h1>
+      <div>
       <%= cl_image_tag @plant.photo.path, width: 600, height: 450, crop: :fill %>
+      <%= cl_image_tag @plant.user.photo.path, height: 50, width: 50, crop: :fill,  class: "card-user avatar-large" %>
+  <%= link_to "", plant_path(plant), class: "card-link" %>
+</div>
+</div>
+
+
     </div>
     <div class="media-section">
         <div class="product-category"><%= @plant.height + "cm"%></div>
