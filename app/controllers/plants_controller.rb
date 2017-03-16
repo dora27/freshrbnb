@@ -4,7 +4,12 @@ class PlantsController < ApplicationController
 
   def index
     # @plants = Plant.all
-    @plants = Plant.where.not(latitude: nil, longitude: nil)
+    # @plants = Plant.where.not(latitude: nil, longitude: nil)
+    unless params[:where] == ""
+      @plants = Plant.near(params[:where], 10)
+    else
+      @plants = Plant.all
+    end
 
     @hash = Gmaps4rails.build_markers(@plants) do |plant, marker|
       marker.lat plant.latitude
@@ -12,10 +17,11 @@ class PlantsController < ApplicationController
     end
   end
 
+
   def show
     @plant = Plant.find(params[:id])
-    @plants = Plant.where.not(latitude: nil, longitude: nil)
-    @hash = Gmaps4rails.build_markers(@plants_path) do |plant, marker|
+    # @plants = Plant.where.not(latitude: nil, longitude: nil)
+    @hash = Gmaps4rails.build_markers(@plant) do |plant, marker|
       marker.lat plant.latitude
       marker.lng plant.longitude
     end

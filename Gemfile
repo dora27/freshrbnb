@@ -19,7 +19,10 @@ gem 'devise'
 gem 'faker'
 gem 'omniauth-facebook'
 gem 'bootstrap-sass'
-# gem "omniauth-google-oauth2"
+
+source "https://rails-assets.org" do
+  gem 'rails-assets-bootstrap-datepicker'
+end
 
 #cloudinary
 gem 'cloudinary', '1.1.7'
