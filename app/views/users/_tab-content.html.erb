@@ -1,13 +1,13 @@
 <div class="container-fluid text-center">
 
-  <div class="tab-content hidden" id="infos">
+  <div class="tab-content active" id="infos">
    <h2>First name: <%= @user.first_name %></h2>
    <h2>Last name: <%= @user.last_name %></h2>
    <h2>Email: <%= @user.email %></h2>
    <h2>Date of birth: <%= @user.birthday %></h2>
   </div>
 
-  <div class="container tab-content active" id="plants">
+  <div class="container tab-content hidden" id="plants">
     <div class="container">
       <div class="row">
         <% @user.plants.each do |plant| %>
