@@ -5,7 +5,13 @@
   <div class="card-description">
     <h2><%= plant.description %></h2>
   </div>
-  <%= image_tag "http://lorempixel.com/400/400/people/#{rand(10) + 1}", class: "card-user avatar-large" %>
+
+
+<% if plant.user.photo %>
+<%= cl_image_tag plant.user.photo.path, height: 50, width: 50, crop: :fill, class: "avatar-large card-user" %>
+<% end %>
+
+
   <%= link_to "", plant_path(plant), class: "card-link" %>
 </div>
 
