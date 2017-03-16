@@ -1,24 +1,61 @@
+<%= content_for(:title) do %>
+Fresh Rbnb - <%= @plant.name %>
+<% end %>
+
 <div class="container navbar-marged">
   <div class="row show-plant">
 
     <div class="col-xs-12 col-md-3">
-      <%= cl_image_tag @plant.photo.path, width: 250, height: 500, crop: :fill %>
+      <%= cl_image_tag @plant.photo.path, width: 250, height: 550, crop: :fill %>
     </div>
 
     <div class="col-xs-12 col-md-6">
+    <h3><b><%= @plant.name  %></b> - <%= @plant.price%> € </h3>
       <div class="description-plant">
-        <h3><%= @plant.name  %> <%= @plant.price%> €</h3>
-        <i class="fa fa-long-arrow-up" aria-hidden="true">  <%= @plant.height + "cm"%>  </i>
-        <br>
-        <br>
-        <i class="fa fa-book" aria-hidden="true">  <%= @plant.description %> </i>
-        <br>
-        <br>
-        <i class="fa fa-map-marker" aria-hidden="true">  <%= @plant.location %> </i>
-        <br>
-        <br>
+        <div class="owner">
+          <%= cl_image_tag @plant.user.photo.path, height: 50, width: 50, crop: :fill,  class: "card-user avatar-large" %>
+          <h5 class="text-right"><%= @plant.user.first_name + " " + @plant.user.last_name %> </h5>
+        </div>
+      <br>
+      <br>
+        <p class="fa fa-arrows-v" aria-hidden="true">  <%= @plant.height + "cm" %>  </p>
+      <br>
+      <br>
+        <p class="fa fa-book" aria-hidden="true">  <%= @plant.description %> </p>
+      <br>
+      <br>
+
+      <br>
+      <br>
       </div>
+
+            <div class="share">
+        <div class="share-links text-center">
+        <br>
+          <a href="#" class="share-link bg-facebook">
+            <i class="fa fa-facebook"></i>
+          </a>
+          <a href="#" class="share-link bg-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+          <a href="#" class="share-link bg-email">
+            <i class="fa fa-envelope-o"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-3" style= "height:78vh width:120vh">
+      <div class="form-book">
+        <%= simple_form_for [@plant, @booking] do |f| %>
+          <%= f.input :pick_up, placeholder: "dd/mm/yyyy" %>
+          <%= f.input :bring_back, placeholder: "dd/mm/yyyy" %>
+          <%= f.submit "Book", class: "btn-treehouse"%>
+        <% end %>
+      </div>
+
       <div class="map-plant">
+      <p class="fa fa-map-marker" aria-hidden="true">  <%= @plant.location %> </p>
         <div id="map" style="width: 100%; height: 270px;"></div>
           <% content_for(:after_js) do %>
             <%= javascript_tag do %>
@@ -38,30 +75,6 @@
           <% end %>
          <% end %>
        </div>
-      <div class="share">
-        <div class="share-links text-center">
-        <br>
-          <a href="#" class="share-link bg-facebook">
-            <i class="fa fa-facebook"></i>
-          </a>
-          <a href="#" class="share-link bg-twitter">
-            <i class="fa fa-twitter"></i>
-          </a>
-          <a href="#" class="share-link bg-email">
-            <i class="fa fa-envelope-o"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xs-12 col-md-3" style= "height:78vh">
-      <div class="form-book">
-        <%= simple_form_for [@plant, @booking] do |f| %>
-          <%= f.input :pick_up, placeholder: "dd/mm/yyyy" %>
-          <%= f.input :bring_back, placeholder: "dd/mm/yyyy" %>
-          <%= f.submit "Book", class: "btn-treehouse"%>
-        <% end %>
-      </div>
     </div>
   </div>
 </div>
