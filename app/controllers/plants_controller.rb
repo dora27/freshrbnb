@@ -1,5 +1,5 @@
 class PlantsController < ApplicationController
-  before_action :set_plant, only: [:show, :edit, :update]
+  before_action only: [:show, :edit, :update]
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -10,7 +10,6 @@ class PlantsController < ApplicationController
     else
       @plants = Plant.all
     end
-
     @hash = Gmaps4rails.build_markers(@plants) do |plant, marker|
       marker.lat plant.latitude
       marker.lng plant.longitude
@@ -19,6 +18,7 @@ class PlantsController < ApplicationController
 
 
   def show
+    @user = find_user
     @plant = Plant.find(params[:id])
     # @plants = Plant.where.not(latitude: nil, longitude: nil)
     @hash = Gmaps4rails.build_markers(@plant) do |plant, marker|
@@ -51,12 +51,16 @@ class PlantsController < ApplicationController
 
 private
 
-  def set_plant
-    @plant = Plant.find(params[:id])
-  end
+  # def set_plant
+  #   @plant = Plant.find(params[:id])
+  # end
 
   def plant_params
     params.require(:plant).permit(:name, :height, :description, :location, :price, :photo, :photo_cache)
+  end
+
+  def find_user
+    @user = User.find(current_user.id)
   end
 
 end

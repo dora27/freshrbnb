@@ -4,7 +4,8 @@ Rails.application.routes.draw do
     root to: 'pages#home'
     resources :plants, only:[:index, :new, :create, :edit, :update]
     resources :plants, only:[:show] do
-    resources :bookings, only: [:new, :create]
+      resources :bookings, only: [:new, :create]
+      resources :reviews, only: [:new, :create]
     end
 
     resources :users, only: [:edit, :update, :show]
