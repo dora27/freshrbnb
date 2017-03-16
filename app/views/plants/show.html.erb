@@ -24,7 +24,14 @@ Fresh Rbnb - <%= @plant.name %>
         <p class="fa fa-book" aria-hidden="true">  <%= @plant.description %> </p>
       <br>
       <br>
-
+      <p id="status">
+        <em>Status:</em>
+        <% if @plant.status == "Available" %>
+          <span id="available"><%= @plant.status %></span>
+        <% else %>
+          <span id="rented"><%= @plant.status %></span>
+        <% end %>
+      </p>
       <br>
       <br>
       </div>
@@ -50,7 +57,11 @@ Fresh Rbnb - <%= @plant.name %>
         <%= simple_form_for [@plant, @booking] do |f| %>
           <%= f.input :pick_up, placeholder: "dd/mm/yyyy" %>
           <%= f.input :bring_back, placeholder: "dd/mm/yyyy" %>
-          <%= f.submit "Book", class: "btn-treehouse"%>
+          <% if @plant.status == "Rented" %>
+            <p> Already rented </p>
+          <% else %>
+            <%= f.submit "Book", class: "btn-treehouse"%>
+          <% end %>
         <% end %>
       </div>
 
