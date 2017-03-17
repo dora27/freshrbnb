@@ -16,12 +16,12 @@
               <div class="row">
                 <div class="col-lg-3 no-padding">
                   <%= link_to plant_path(plant) do %>
-                  <%= cl_image_tag plant.photo.path, width:150, height:150, crop: :fill, class: "img-circle" %>
+                  <%= cl_image_tag plant.photo.path, width:150, height:150, crop: :fill, class: "icone-plants" %>
                   <% end %>
                 </div>
                 <div class="col-lg-9 no-padding">
                   <h1><%= plant.name %></h1>
-                    <p><i class="fa fa-long-arrow-up"> <%= plant.height + "cm"%></i></p>
+                    <p><i class="fa fa-arrows-v"> <%= plant.height + "cm"%></i></p>
                     <p><i class="fa fa-book"> <%= plant.description %></i></p>
                     <p><i class="fa fa-map-marker"> <%= plant.location %></i></p>
                 </div>
@@ -52,12 +52,12 @@
               <div class="row">
                 <div class="col-lg-3 no-padding">
                   <%= link_to plant_booking_path(plant) do %>
-                  <%= cl_image_tag plant.photo.path, width:150, height:150, crop: :fill, class: "img-circle" %>
+                  <%= cl_image_tag plant.photo.path, width:150, height:150, crop: :fill, class: "icone-plants" %>
                   <% end %>
                 </div>
                 <div class="col-lg-9 no-padding">
                   <h1><%= plant.name %></h1>
-                    <p><i class="fa fa-long-arrow-up"> <%= plant.height + "cm"%></i></p>
+                    <p><i class="fa fa-arrows-v"> <%= plant.height + "cm"%></i></p>
                     <p><i class="fa fa-book"> <%= plant.description %></i></p>
                     <p><i class="fa fa-map-marker"> <%= plant.location %></i></p>
                 </div>

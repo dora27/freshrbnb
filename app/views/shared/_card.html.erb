@@ -1,23 +1,21 @@
-<%= link_to "", plant_path(plant), class: "card-link" %>
-
+<%= link_to plant_path(plant) do %>
 <div class="card">
-
-  <div class="card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path plant.photo.path %>')">
+  <div class="card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path plant.photo.path %>');">
     <div class="card-price">
-      <span><b><%= plant.price %> € <b></span>
+      <span><b><%= plant.price %> € </b></span>
     </div>
+
     <div class="card-avatar">
       <% if plant.user.photo %>
-      <%= cl_image_tag plant.user.photo.path, height: 50, width: 50, crop: :fill, class: "avatar-large" %>
+        <%= cl_image_tag plant.user.photo.path, height: 50, width: 50, crop: :fill, class: "avatar-large" %>
       <% end %>
     </div>
   </div>
 
   <div class="card-description" >
-  <h5><b><%= plant.name %></b> - <%= plant.description.truncate(100) + "..." %></h5>
+    <h5><b><%= plant.name %></b> - <%= plant.description.truncate(100) %></h5>
   </div>
-
-
 </div>
+<% end %>
 
 
