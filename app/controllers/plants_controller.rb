@@ -14,6 +14,8 @@ class PlantsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@plants) do |plant, marker|
       marker.lat plant.latitude
       marker.lng plant.longitude
+
+
     end
   end
 
@@ -24,6 +26,7 @@ class PlantsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@plant) do |plant, marker|
       marker.lat plant.latitude
       marker.lng plant.longitude
+
     end
     @booking = Booking.new
   end
