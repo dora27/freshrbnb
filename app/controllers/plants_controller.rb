@@ -5,10 +5,10 @@ class PlantsController < ApplicationController
   def index
     # @plants = Plant.all
     # @plants = Plant.where.not(latitude: nil, longitude: nil)
-    unless params[:where] == ""
-      @plants = Plant.near(params[:where], 10)
+    if !params[:where].blank?
+        @plants = Plant.near(params[:where], 10)
     else
-      @plants = Plant.all
+        @plants = Plant.all
     end
     @hash = Gmaps4rails.build_markers(@plants) do |plant, marker|
       marker.lat plant.latitude
