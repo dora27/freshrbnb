@@ -7,11 +7,18 @@ class BookingsController < ApplicationController
     @booking.user = @user
     @booking.plant = @plant
     @booking.save
-    redirect_to user_path(current_user.id)
+
+    redirect_to plants_path
+  end
+
+  def show
+    @user = User.find(current_user.id)
+    @plant = Plant.find(params[:plant_id])
+    @bookings = @plant.bookings
   end
 
   private
   def booking_params
-    params.require(:booking).permit(:pick_up, :bring_back)
+    params.require(:booking).permit(:pick_up, :bring_back, :message)
   end
 end

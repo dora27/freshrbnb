@@ -1,5 +1,6 @@
 class Plant < ApplicationRecord
   belongs_to :user
+  has_many :bookings
   has_many :reviews, dependent: :destroy
   has_attachment :photo
 
@@ -11,4 +12,5 @@ class Plant < ApplicationRecord
   validates :price, presence: true
   validates :height, numericality: true, allow_blank: true
   validates :photo, presence: true
+  validates :location, presence: true
 end

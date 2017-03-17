@@ -12,17 +12,38 @@ Fresh Rbnb - <%= @plant.name %>
      <% end %>
 
     <div class="col-xs-12 col-md-6">
-      <div class="description-plant">
-        <h3><b><%= @plant.name  %></b> - <%= @plant.price%> € </h3>
 
-          <div class="owner">
-            <% if @plant.user.photo %>
+      <div class="description-plant">
+
+      <h3><b><%= @plant.name  %></b> - <%= @plant.price%> € </h3>
+        <div class="owner">
+              <% if @plant.user.photo %>
               <%= cl_image_tag @plant.user.photo.path, height: 50, width: 50, crop: :fill,  class: "card-user avatar-large" %>
             <% end %>
             <% if @plant.user.first_name && @plant.user.last_name %>
               <h5 class="text-right"><%= @plant.user.first_name + " " + @plant.user.last_name %> </h5>
             <% end %>
-          </div>
+        </div>
+      <br>
+      <br>
+       <p class="fa fa-arrows-v" aria-hidden="true" icon-large>  <%= @plant.height + "cm" %>  </p>
+      <br>
+      <br>
+        <p class="fa fa-book" aria-hidden="true">  <%= @plant.description %> </p>
+      <br>
+      <br>
+      <p id="status">
+        <em>Status:</em>
+        <% if @plant.status == "Available" %>
+          <span id="available"><%= @plant.status %></span>
+        <% else %>
+          <span id="rented"><%= @plant.status %></span>
+        <% end %>
+      </p>
+      <br>
+      <br>
+      </div>
+
 
         <br>
         <br>
@@ -39,7 +60,7 @@ Fresh Rbnb - <%= @plant.name %>
       <div class="plant-reviews">
         <h1> Reviews </h1>
         <% @plant.reviews.each do |review| %>
-        <p><%= @user.first_name%> <%= @user.last_name%> <%= review.rate %></p>
+        <p><%= review.user.first_name%> <%= review.user.last_name%> <%= review.rate %></p>
         <p><%= review.description%></p>
         <% end %>
         <%= link_to "Comment", new_plant_review_path(@plant) , class: "btn-treehouse" %>
@@ -49,8 +70,11 @@ Fresh Rbnb - <%= @plant.name %>
     <div class="col-xs-12 col-md-3" style= "height:78vh width:120vh">
       <div class="form-book">
         <%= simple_form_for [@plant, @booking] do |f| %>
+
+
           <%= f.text_field :pick_up, placeholder: "dd/mm/yyyy",class: 'datepicker' %>
           <%= f.text_field :bring_back, placeholder: "dd/mm/yyyy", class: 'datepicker' %>
+          <%= f.text_area :message, :cols => "16", :rows => "3" %>
           <%= f.submit "Book", class: "btn-treehouse"%>
         <% end %>
       </div>
