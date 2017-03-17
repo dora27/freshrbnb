@@ -7,7 +7,7 @@ class BookingsController < ApplicationController
     @booking.user = @user
     @booking.plant = @plant
     @booking.save
-
+    flash[:notice] = "Votre booking a bien été créé."
     redirect_to plants_path
   end
 
