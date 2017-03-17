@@ -18,7 +18,7 @@ class PlantsController < ApplicationController
 
 
   def show
-    @user = find_user
+
     @plant = Plant.find(params[:id])
     # @plants = Plant.where.not(latitude: nil, longitude: nil)
     @hash = Gmaps4rails.build_markers(@plant) do |plant, marker|
