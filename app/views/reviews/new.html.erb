@@ -1,0 +1,10 @@
+<h1 class="navbar-marged"> New review </h1>
+<div class="form-new-review">
+  <%= simple_form_for [@plant, @review] do |f| %>
+    <div class="form-inputs">
+    <%= f.text_field :description, placeholder: "Enter your comment" %>
+    <%= f.input :rate, collection: 1..5 %>
+    <%= f.submit "Create", class: "btn-treehouse"%>
+    <% end %>
+  </div>
+</div>

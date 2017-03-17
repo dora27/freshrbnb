@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170317100135) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,14 +32,18 @@ ActiveRecord::Schema.define(version: 20170317100135) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+
     t.integer  "plant_id"
     t.integer  "user_id"
     t.string   "pick_up"
     t.string   "bring_back"
+
     t.string   "message"
     t.string   "status",     default: "Pending", null: false
+
     t.index ["plant_id"], name: "index_bookings_on_plant_id", using: :btree
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end
@@ -58,6 +63,18 @@ ActiveRecord::Schema.define(version: 20170317100135) do
     t.index ["user_id"], name: "index_plants_on_user_id", using: :btree
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.float    "rate"
+    t.integer  "user_id"
+    t.integer  "plant_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["plant_id"], name: "index_reviews_on_plant_id", using: :btree
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -75,6 +92,11 @@ ActiveRecord::Schema.define(version: 20170317100135) do
     t.string   "last_name"
     t.string   "birthday"
     t.string   "description"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "facebook_picture_url"
+    t.string   "token"
+    t.datetime "token_expiry"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -82,4 +104,6 @@ ActiveRecord::Schema.define(version: 20170317100135) do
   add_foreign_key "bookings", "plants"
   add_foreign_key "bookings", "users"
   add_foreign_key "plants", "users"
+  add_foreign_key "reviews", "plants"
+  add_foreign_key "reviews", "users"
 end
