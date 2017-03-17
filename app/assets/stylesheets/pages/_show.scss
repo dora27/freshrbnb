@@ -1,7 +1,28 @@
 
 .wrapper_plant_infos {
-  background: linear-gradient(180deg, rgba(234, 234, 234, 0.9) 0%, rgba(234, 234, 220, 0.5) 50%);
-  height: 100%;
+  margin: 0px 35px;
+ }
+.review-comment{
+  border-bottom: 1px solid $green;
+  margin-bottom: 10px;
+}
+
+.plant-aside{
+  height: 100vh;
+  background-size: cover;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px $gray;
+
+}
+
+.box-profil{
+  padding: 10px;
+}
+
+.form-book{
+  margin: 40px 0px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px $gray;
 }
 
 .plant-title {
@@ -14,6 +35,9 @@
   height: 200px;
 }
 
+#map{
+  margin-top: 3em;
+}
 .title-index-h1 {
   padding-bottom: 0px !important;
   font-size: 35px;

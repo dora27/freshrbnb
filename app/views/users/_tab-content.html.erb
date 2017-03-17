@@ -19,7 +19,7 @@
                   <%= cl_image_tag plant.photo.path, width:150, height:150, crop: :fill, class: "icone-plants" %>
                   <% end %>
                 </div>
-                <div class="col-lg-9 no-padding">
+                <div class="col-lg-9 box-profil">
                   <h1><%= plant.name %></h1>
                     <p><i class="fa fa-arrows-v"> <%= plant.height + "cm"%></i></p>
                     <p><i class="fa fa-book"> <%= plant.description %></i></p>
@@ -55,7 +55,7 @@
                   <%= cl_image_tag plant.photo.path, width:150, height:150, crop: :fill, class: "icone-plants" %>
                   <% end %>
                 </div>
-                <div class="col-lg-9 no-padding">
+                <div class="col-lg-9 box-profil">
                   <h1><%= plant.name %></h1>
                     <p><i class="fa fa-arrows-v"> <%= plant.height + "cm"%></i></p>
                     <p><i class="fa fa-book"> <%= plant.description %></i></p>
