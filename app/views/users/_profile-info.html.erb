@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-lg-3">
+  </div>
+  <div class="col-lg-6">
+    <% if @user.photo %>
+      <%= cl_image_tag @user.photo.path, class: "avatar-very-large " %>
+    <% end %>
+    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+    <h2><em>Senior Member</em><h2>
+  </div>
+</div>

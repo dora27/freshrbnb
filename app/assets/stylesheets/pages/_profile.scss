@@ -1,18 +1,116 @@
-.leading{
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+// Header infos //
+
+.profile-header-wrapper {
+  background: #EAEAEA;
 }
 
-// .container{
-//   margin: 40px 0px;
-//   margin-right: auto;
-//   margin-left: auto;
-//   padding-left: 15px;
-//   padding-right: 15px;
-// }
+.profile-header-container h1 {
+  margin: 3px;
+  padding-bottom: 0px;
+  color: black;
+  font-size: 30px;
+  letter-spacing: -1px;
+}
+.profile-header-container h2 {
+  color: black;
+  opacity: 0.8;
+  font-size: 19px;
+  font-weight: lighter;
+  margin-bottom: 0;
+  letter-spacing: -1px;
+}
+.profile-header-infos {
+  padding: 20px 0;
+}
 
-.container h1 {
+// Tabs //
+
+.tabs {
+  display: flex;
+  padding: 10px 100px 0 100px;
+}
+.tabs a {
+  color: white;
+}
+.tabs a:hover {
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0.8;
+}
+.tabs h3 {
+  font-size: 17px;
+  margin: 0;
+}
+
+.tabs p {
+  opacity: 0.5;
+  margin-bottom: 0;
+}
+.tab {
+  background: #9b9696;
+  flex: 1 1 auto;
   text-align: center;
+  padding: 20px 0;
+}
+.tab:first-child {
+  border-radius: 10px 0 0 0;
+}
+.tab:last-child {
+  border-radius: 0 10px 0 0;
+}
+.tab.active {
+  background: white;
+  color: black;
+}
+.tab-content {
+  padding-top: 50px;
+}
+
+.tab-content h1 {
+  font-size: 20px;
+  margin-top: 0px;
+  padding: 0;
+  text-align:center;
+  font-style: italic;
+}
+
+.tab-content h2 {
+  font-size: 20px;
+  font-family: Cairo;
+}
+
+.tab-content p {
+  font-size: 16px;
+  text-align:left;
+  align:left;
+  margin-left: 30px;
+}
+
+#infos {
+  text-align:left;
+}
+
+//Wrapper
+
+.wrapper-plant-infos {
+  margin: 10px;
+  border: 1px solid green;
+}
+
+// Status
+
+#status {
+  text-align: right;
+  font-size: 18px;
+  position: absolute;
+  right: 35px;
+  bottom: 3px;
+}
+
+#available {
+  color: green;
+}
+
+#rented {
+  color: red;
 }

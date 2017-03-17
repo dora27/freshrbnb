@@ -6,15 +6,23 @@ Fresh Rbnb - <%= @plant.name %>
   <div class="row show-plant">
 
     <div class="col-xs-12 col-md-3">
+    <% if @plant.photo %>
       <%= cl_image_tag @plant.photo.path, width: 250, height: 550, crop: :fill %>
     </div>
+     <% end %>
 
     <div class="col-xs-12 col-md-6">
-    <h3><b><%= @plant.name  %></b> - <%= @plant.price %> € </h3>
+
       <div class="description-plant">
+
+      <h3><b><%= @plant.name  %></b> - <%= @plant.price%> € </h3>
         <div class="owner">
-          <%= cl_image_tag @plant.user.photo.path, height: 50, width: 50, crop: :fill,  class: "card-user avatar-large" %>
-          <h5 class="text-right"><%= @plant.user.first_name + " " + @plant.user.last_name %> </h5>
+              <% if @plant.user.photo %>
+              <%= cl_image_tag @plant.user.photo.path, height: 50, width: 50, crop: :fill,  class: "card-user avatar-large" %>
+            <% end %>
+            <% if @plant.user.first_name && @plant.user.last_name %>
+              <h5 class="text-right"><%= @plant.user.first_name + " " + @plant.user.last_name %> </h5>
+            <% end %>
         </div>
       <br>
       <br>
@@ -24,32 +32,49 @@ Fresh Rbnb - <%= @plant.name %>
         <p class="fa fa-book" aria-hidden="true">  <%= @plant.description %> </p>
       <br>
       <br>
-
+      <p id="status">
+        <em>Status:</em>
+        <% if @plant.status == "Available" %>
+          <span id="available"><%= @plant.status %></span>
+        <% else %>
+          <span id="rented"><%= @plant.status %></span>
+        <% end %>
+      </p>
       <br>
       <br>
       </div>
 
-            <div class="share">
-        <div class="share-links text-center">
+
         <br>
-          <a href="#" class="share-link bg-facebook">
-            <i class="fa fa-facebook"></i>
-          </a>
-          <a href="#" class="share-link bg-twitter">
-            <i class="fa fa-twitter"></i>
-          </a>
-          <a href="#" class="share-link bg-email">
-            <i class="fa fa-envelope-o"></i>
-          </a>
+        <br>
+          <p class="fa fa-arrows-v" aria-hidden="true">  <%= @plant.height + "cm" %>  </p>
+        <br>
+        <br>
+          <p class="fa fa-book" aria-hidden="true">  <%= @plant.description %> </p>
+        <br>
+        <br>
+
+        <br>
+        <br>
         </div>
+      <div class="plant-reviews">
+        <h1> Reviews </h1>
+        <% @plant.reviews.each do |review| %>
+        <p><%= review.user.first_name%> <%= review.user.last_name%> <%= review.rate %></p>
+        <p><%= review.description%></p>
+        <% end %>
+        <%= link_to "Comment", new_plant_review_path(@plant) , class: "btn-treehouse" %>
       </div>
     </div>
 
     <div class="col-xs-12 col-md-3" style= "height:78vh width:120vh">
       <div class="form-book">
         <%= simple_form_for [@plant, @booking] do |f| %>
-          <%= f.input :pick_up, placeholder: "dd/mm/yyyy" %>
-          <%= f.input :bring_back, placeholder: "dd/mm/yyyy" %>
+
+
+          <%= f.text_field :pick_up, placeholder: "dd/mm/yyyy",class: 'datepicker' %>
+          <%= f.text_field :bring_back, placeholder: "dd/mm/yyyy", class: 'datepicker' %>
+          <%= f.text_area :message, :cols => "16", :rows => "3" %>
           <%= f.submit "Book", class: "btn-treehouse"%>
         <% end %>
       </div>
@@ -75,9 +100,24 @@ Fresh Rbnb - <%= @plant.name %>
           <% end %>
          <% end %>
        </div>
+         <div class="share">
+        <div class="share-links text-center">
+        <br>
+          <a href="#" class="share-link bg-facebook">
+            <i class="fa fa-facebook"></i>
+          </a>
+          <a href="#" class="share-link bg-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+          <a href="#" class="share-link bg-email">
+            <i class="fa fa-envelope-o"></i>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
 
 
 
