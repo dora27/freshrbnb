@@ -1,0 +1,33 @@
+<h1 class="navbar-marged">Booking requests for: <%= @plant.name %></h1>
+
+<div class="container-fluid">
+  <div class="row">
+    <% @bookings.each do |booking| %>
+    <div class="col-lg-1">
+      <% if @user.photo %>
+        <%= cl_image_tag @user.photo.path, class: "avatar-large " %>
+      <% end %>
+    </div>
+    <div class="col-lg-6">
+      <h4><%= @user.first_name %> <%= @user.last_name %></h4>
+    </div>
+    <div class="col-lg-5">
+      Pick-up date: <%= booking.pick_up %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+       <p class="text-center"><%= booking.message %></p>
+    </div>
+  </div>
+  <div style= "text-align:right;">
+    <%= link_to "Accept", "", class: "btn btn-primary" %>
+    <%= link_to "Refuse", "",class: "btn btn-warning" %>
+  </div>
+  <hr>
+  <% end %>
+</div>
+
+
+
+

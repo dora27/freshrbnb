@@ -57,11 +57,8 @@ Fresh Rbnb - <%= @plant.name %>
         <%= simple_form_for [@plant, @booking] do |f| %>
           <%= f.input :pick_up, placeholder: "dd/mm/yyyy" %>
           <%= f.input :bring_back, placeholder: "dd/mm/yyyy" %>
-          <% if @plant.status == "Rented" %>
-            <p> Already rented </p>
-          <% else %>
-            <%= f.submit "Book", class: "btn-treehouse"%>
-          <% end %>
+          <%= f.text_area :message, :cols => "16", :rows => "3" %>
+          <%= f.submit "Book", class: "btn-treehouse"%>
         <% end %>
       </div>
 
