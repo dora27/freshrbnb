@@ -40,8 +40,7 @@ User.destroy_all
 #   plant.save!
 # end
 
-
-  url = "https://source.unsplash.com/collection/580685"
+url = "https://source.unsplash.com/collection/580685"
   sleep 1
   user = User.new(
     first_name: Faker::Name.first_name,
@@ -54,19 +53,21 @@ User.destroy_all
   user.photo_url = url
   user.save!
 
-  url = "https://images.unsplash.com/photo-1487020530383-c62abe4f9346"
+  url = "https://images.unsplash.com/photo-1478250496854-68a85d5e1ce7"
   plant = Plant.new(
     name: Faker::Pokemon.name,
     price: Random.rand(100),
     height: Random.rand(500),
-    location: "16 villa gaudelet Paris",
-    description: "L’Euphorbe est une magnifique plante succulente aux airs de cactus. Même si cette plante n’est pas destinée à pousser en intérieur, il suffit de respecter des règles simples pour pouvoir profiter de son allure incroyable à la maison. Ingens est une variété particulière d’Euphorbe absolument fascinante. Elle est tout simplement sublime. Son nom d’ailleurs ne lui rend pas du tout justice. Elle devrait porter un petit nom tout doux, tout rond… Parce que le top quand même c’est que Ingens n’a pas d’aiguillons. Pas un seul à l’horizon. Effet déco garanti, laissez-vous tenter !",
+    location: "65 rue du moulin vert paris",
+    description: "plante succulente avec une silhouette verticale originale et décorative. Plante vraiment robuste est très facile d’entretien, c’est une incontournable de nos intérieurs. Il existe plusieurs variétés toutes aussi graphiques les unes que les autres pour notre plus grand bonheur ! La variété Zeylanica se caractérise par ses longues feuilles d’un vert profond  tigrées d’un vert tendre.
+Pour la petite histoire… c’est le naturaliste Carl Peter Thunberg qui a donné son nom au Sansevieria en 1794, en honneur au prince italien Raimondo di Sangro, originaire de San Severo. Un homme de sciences qui a marqué son époque par ses nombreuses recherches et inventions et qui était une figure emblématique du siècle des Lumières.",
     user_id: User.all.last.id
     )
   plant.photo_url = url
   plant.save!
 
 
+
   url = "https://source.unsplash.com/collection/580685"
   sleep 1
   user = User.new(
@@ -80,7 +81,7 @@ User.destroy_all
   user.photo_url = url
   user.save!
 
-  url = "https://images.unsplash.com/photo-1436196241329-0d398c562432"
+  url = "https://www.akagreen.co/wp-content/uploads/2017/01/monstera-deliciosa-variegata-2-500x500.jpg"
   plant = Plant.new(
     name: Faker::Pokemon.name,
     price: Random.rand(100),
@@ -145,7 +146,8 @@ Pour la petite histoire… ‘Poly’ veut dire ‘beaucoup’, ‘scias’ sign
   plant.photo_url = url
   plant.save!
 
-   url = "https://source.unsplash.com/collection/580685"
+
+  url = "https://source.unsplash.com/collection/580685"
   sleep 1
   user = User.new(
     first_name: Faker::Name.first_name,
@@ -158,14 +160,13 @@ Pour la petite histoire… ‘Poly’ veut dire ‘beaucoup’, ‘scias’ sign
   user.photo_url = url
   user.save!
 
-  url = "https://images.unsplash.com/photo-1478250496854-68a85d5e1ce7"
+  url = "https://images.unsplash.com/photo-1487020530383-c62abe4f9346"
   plant = Plant.new(
     name: Faker::Pokemon.name,
     price: Random.rand(100),
     height: Random.rand(500),
-    location: "65 rue du moulin vert paris",
-    description: "plante succulente avec une silhouette verticale originale et décorative. Plante vraiment robuste est très facile d’entretien, c’est une incontournable de nos intérieurs. Il existe plusieurs variétés toutes aussi graphiques les unes que les autres pour notre plus grand bonheur ! La variété Zeylanica se caractérise par ses longues feuilles d’un vert profond  tigrées d’un vert tendre.
-Pour la petite histoire… c’est le naturaliste Carl Peter Thunberg qui a donné son nom au Sansevieria en 1794, en honneur au prince italien Raimondo di Sangro, originaire de San Severo. Un homme de sciences qui a marqué son époque par ses nombreuses recherches et inventions et qui était une figure emblématique du siècle des Lumières.",
+    location: "16 villa gaudelet Paris",
+    description: "L’Euphorbe est une magnifique plante succulente aux airs de cactus. Même si cette plante n’est pas destinée à pousser en intérieur, il suffit de respecter des règles simples pour pouvoir profiter de son allure incroyable à la maison. Ingens est une variété particulière d’Euphorbe absolument fascinante. Elle est tout simplement sublime. Son nom d’ailleurs ne lui rend pas du tout justice. Elle devrait porter un petit nom tout doux, tout rond… Parce que le top quand même c’est que Ingens n’a pas d’aiguillons. Pas un seul à l’horizon. Effet déco garanti, laissez-vous tenter !",
     user_id: User.all.last.id
     )
   plant.photo_url = url
@@ -259,7 +260,7 @@ Pour la petite histoire… c’est le naturaliste Carl Peter Thunberg qui a donn
   user.photo_url = url
   user.save!
 
-  url = "https://images.unsplash.com/photo-1453904300235-0f2f60b15b5d"
+  url = "https://www.akagreen.co/wp-content/uploads/2017/02/charlotte-castro-x-akagreen-00530.jpg"
   plant = Plant.new(
     name: Faker::Pokemon.name,
     price: Random.rand(100),
