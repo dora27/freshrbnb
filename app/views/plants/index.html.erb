@@ -1,8 +1,8 @@
 <div class="navbar-marged">
 
-<h1 class ="title-index" style="text-align:center">Nature is everywhere</h1>
-<% unless params[:where] == "" %>
-<h2 class ="title-index" style="text-align:center"> near <%= params[:where] %> </h2>
+<h1 class="title-index-h1" style="text-align:center">Nature is everywhere</h1>
+<% unless params[:where].blank? %>
+<h2 class="title-index-h2" style="text-align:center"> <%= params[:where] %> </h2>
 <% end %>
 <div class="container-fluid">
   <div class="row">

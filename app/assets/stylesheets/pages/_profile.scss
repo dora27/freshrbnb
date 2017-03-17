@@ -47,7 +47,7 @@
   margin-bottom: 0;
 }
 .tab {
-  background: #9b9696;
+  background: $green;
   flex: 1 1 auto;
   text-align: center;
   padding: 20px 0;
@@ -94,7 +94,8 @@
 
 .wrapper-plant-infos {
   margin: 10px;
-  border: 1px solid green;
+  border: 2px solid #e5e5e5;
+  border-radius: 15px;
 }
 
 // Status
@@ -113,4 +114,8 @@
 
 #rented {
   color: red;
+}
+
+.icone-plants{
+border-radius: 15px;
 }

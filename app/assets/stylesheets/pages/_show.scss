@@ -1,3 +1,4 @@
+
 .wrapper_plant_infos {
   background: linear-gradient(180deg, rgba(234, 234, 234, 0.9) 0%, rgba(234, 234, 220, 0.5) 50%);
   height: 100%;
@@ -13,10 +14,23 @@
   height: 200px;
 }
 
+.title-index-h1 {
+  padding-bottom: 0px !important;
+  font-size: 35px;
+}
+
+.title-index-h2 {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+
+
 .description-plant i{
   font-size: 21px;
 }
-.show-plant{
+.show-plant {
   margin: 20px 0px;
 }
 
@@ -66,9 +80,6 @@
 
 .form-book-col{
   background-color: #EBEBEB;
-}
-.title-index h1 {
-  padding-bottom: 0px;
 }
 
 
