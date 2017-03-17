@@ -9,6 +9,7 @@
 
 Plant.destroy_all
 User.destroy_all
+Booking.destroy_all
 
 # Plant
 10.times do
