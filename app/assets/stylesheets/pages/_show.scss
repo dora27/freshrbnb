@@ -1,3 +1,18 @@
+.wrapper_plant_infos {
+  background: linear-gradient(180deg, rgba(234, 234, 234, 0.9) 0%, rgba(234, 234, 220, 0.5) 50%);
+  height: 100%;
+}
+
+.plant-title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.plant-picture {
+  margin: 100%;
+  height: 200px;
+}
+
 .description-plant i{
   font-size: 21px;
 }
@@ -58,7 +73,6 @@
 
 
 .map-plant {
-  padding-top: 10px;
 }
 
 

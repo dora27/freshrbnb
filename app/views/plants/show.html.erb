@@ -1,86 +1,61 @@
-<%= content_for(:title) do %>
-Fresh Rbnb - <%= @plant.name %>
-<% end %>
-
-<div class="container navbar-marged">
-  <div class="row show-plant">
-
-    <div class="col-xs-12 col-md-3">
+<div class="container navbar-marged no-padding ">
+  <div class="row">
+    <div class="col-lg-4">
     <% if @plant.photo %>
-      <%= cl_image_tag @plant.photo.path, width: 250, height: 550, crop: :fill %>
+      <%= cl_image_tag @plant.photo.path, width: 400, height: 400%>
+    <% end %>
     </div>
-     <% end %>
-
-    <div class="col-xs-12 col-md-6">
-
-      <div class="description-plant">
-
-      <h3><b><%= @plant.name  %></b> - <%= @plant.price%> € </h3>
-        <div class="owner">
-              <% if @plant.user.photo %>
-              <%= cl_image_tag @plant.user.photo.path, height: 50, width: 50, crop: :fill,  class: "card-user avatar-large" %>
-            <% end %>
-            <% if @plant.user.first_name && @plant.user.last_name %>
-              <h5 class="text-right"><%= @plant.user.first_name + " " + @plant.user.last_name %> </h5>
-            <% end %>
+    <div class="col-lg-5">
+      <div class="wrapper_plant_infos no-padding">
+        <div class="row">
+          <div class="col-lg-12">
+            <h3 class="plant-title text-center">
+              <%= @plant.name  %> - <%= "#{@plant.price}€"%>
+            </h3>
+          </div>
         </div>
-      <br>
-      <br>
-       <p class="fa fa-arrows-v" aria-hidden="true" icon-large>  <%= @plant.height + "cm" %>  </p>
-      <br>
-      <br>
-        <p class="fa fa-book" aria-hidden="true">  <%= @plant.description %> </p>
-      <br>
-      <br>
-      <p id="status">
-        <em>Status:</em>
-        <% if @plant.status == "Available" %>
-          <span id="available"><%= @plant.status %></span>
-        <% else %>
-          <span id="rented"><%= @plant.status %></span>
-        <% end %>
-      </p>
-      <br>
-      <br>
-      </div>
 
+        <div class="row">
+          <div class="col-lg-6">
+        <br>
+        <p class="fa fa-arrows-v" aria-hidden="true" icon-large>  <%= @plant.height + "cm" %>
+        </p>
+        <br>
+        <p class="fa fa-book" aria-hidden="true">  <%= @plant.description %></p>
+        <br>
+        <p class="fa fa-map-marker" aria-hidden="true">  <%= @plant.location %> </p>
+        <hr>
 
-        <br>
-        <br>
-          <p class="fa fa-arrows-v" aria-hidden="true">  <%= @plant.height + "cm" %>  </p>
-        <br>
-        <br>
-          <p class="fa fa-book" aria-hidden="true">  <%= @plant.description %> </p>
-        <br>
-        <br>
-
-        <br>
-        <br>
+            <!-- <p id="status">
+            <em>Status:</em>
+            <% if @plant.status == "Available" %>
+              <span id="available"><%= @plant.status %></span>
+            <% else %>
+              <span id="rented"><%= @plant.status %></span>
+            <% end %>
+            </p> -->
+          </div>
         </div>
-      <div class="plant-reviews">
-        <h1> Reviews </h1>
-        <% @plant.reviews.each do |review| %>
-        <p><%= review.user.first_name%> <%= review.user.last_name%> <%= review.rate %></p>
-        <p><%= review.description%></p>
-        <% end %>
-        <%= link_to "Comment", new_plant_review_path(@plant) , class: "btn-treehouse" %>
+
+        <div class="row">
+          <div class="col-lg-12 text-center">
+           <% if @plant.user.photo %>
+              <%= cl_image_tag @plant.user.photo.path, height: 50, width: 50, crop: :fill,  class: "card-user avatar-very-large" %>
+            <% end %>
+          </div>
+          <div class="col-lg-12 text-center">
+          <% if @plant.user.first_name && @plant.user.last_name %>
+              <h4><%= @plant.user.first_name + " " + @plant.user.last_name %> </h4>
+            <% end %>
+          </div>
+          <div>
+
+          </div>
+        </div>
       </div>
     </div>
-
-    <div class="col-xs-12 col-md-3" style= "height:78vh width:120vh">
-      <div class="form-book">
-        <%= simple_form_for [@plant, @booking] do |f| %>
-
-
-          <%= f.text_field :pick_up, placeholder: "dd/mm/yyyy",class: 'datepicker' %>
-          <%= f.text_field :bring_back, placeholder: "dd/mm/yyyy", class: 'datepicker' %>
-          <%= f.text_area :message, :cols => "16", :rows => "3" %>
-          <%= f.submit "Book", class: "btn-treehouse"%>
-        <% end %>
-      </div>
-
-      <div class="map-plant">
-      <p class="fa fa-map-marker" aria-hidden="true">  <%= @plant.location %> </p>
+    <div class="col-lg-3">
+     <div class="map-plant">
         <div id="map" style="width: 100%; height: 270px;"></div>
           <% content_for(:after_js) do %>
             <%= javascript_tag do %>
@@ -100,6 +75,37 @@ Fresh Rbnb - <%= @plant.name %>
           <% end %>
          <% end %>
        </div>
+      <div style= "height:78vh width:120vh">
+        <div class="form-book">
+        <%= simple_form_for [@plant, @booking] do |f| %>
+
+
+          <%= f.text_field :pick_up, placeholder: "dd/mm/yyyy",class: 'datepicker' %>
+          <%= f.text_field :bring_back, placeholder: "dd/mm/yyyy", class: 'datepicker' %>
+          <%= f.text_area :message, :cols => "16", :rows => "3" %>
+          <%= f.submit "Book", class: "btn-treehouse"%>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+      <div class="plant-reviews">
+        <h1> Reviews </h1>
+        <% @plant.reviews.each do |review| %>
+        <p><%= review.user.first_name%> <%= review.user.last_name%> <%= review.rate %></p>
+        <p><%= review.description%></p>
+        <% end %>
+        <%= link_to "Comment", new_plant_review_path(@plant) , class: "btn-treehouse" %>
+      </div>
+    </div>
+
+
          <div class="share">
         <div class="share-links text-center">
         <br>
@@ -117,18 +123,3 @@ Fresh Rbnb - <%= @plant.name %>
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- @plant.image_id -->
-
-
