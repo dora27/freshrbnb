@@ -1,10 +1,23 @@
-<h1 class="navbar-marged"> New review </h1>
-<div class="form-new-review">
-  <%= simple_form_for [@plant, @review] do |f| %>
-    <div class="form-inputs">
-    <%= f.text_field :description, placeholder: "Enter your comment" %>
-    <%= f.input :rate, collection: 1..5 %>
-    <%= f.submit "Create", class: "btn-treehouse"%>
-    <% end %>
+<div class="navbar-marged">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6 col-md-offset-3">
+        <h3>Share your opinion on <%= @plant.name %></h3>
+        <div class="form-new-review">
+          <%= simple_form_for [@plant, @review] do |f| %>
+            <div class="form-inputs">
+              <%= f.text_area :description, placeholder: "Enter your comment", :cols => "60", :rows => "3" %>
+
+              <div class="row">
+                <div class="col-lg-2">
+                  <%= f.input :rate, collection: 1..5 %>
+              </div>
+                </div>
+              <%= f.submit "Post your review", class: "btn btn-default"%>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
