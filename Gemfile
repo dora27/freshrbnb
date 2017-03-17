@@ -17,9 +17,13 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'devise'
 gem 'faker'
+gem 'omniauth-facebook'
+gem 'bootstrap-sass'
+
 source "https://rails-assets.org" do
   gem 'rails-assets-bootstrap-datepicker'
 end
+
 #cloudinary
 gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
@@ -29,9 +33,6 @@ gem 'jquery-fileupload-rails'
 gem "coffee-rails"
 gem "gmaps4rails"
 gem "geocoder"
-source 'https://rails-assets.org' do
-  gem "rails-assets-underscore"
-end
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
@@ -47,5 +48,4 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
 
