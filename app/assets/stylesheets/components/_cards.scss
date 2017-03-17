@@ -1,7 +1,7 @@
 .card {
   margin-bottom: 20px;
   height: 330px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  // text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   color: white;
   position: relative;
@@ -15,9 +15,11 @@
   position: absolute;
   top: 10px;
   left: 10px;
+  font-size: 25px;
   }
 
 .card-description {
+  font-family: $base-font;
   position: absolute;
   bottom: 10px;
   left: 10px;
@@ -43,9 +45,7 @@
   background: black;
   opacity: 0;
 }
-.card-link:hover{
-  opacity: 0.1;
-}
+
 
 .card-title {
   margin-top: 12px;
@@ -74,4 +74,9 @@
   background-size: cover !important;
   color: white;
   position: relative;
+  border-radius: 8px;
+}
+
+.card-photo:hover{
+  opacity: 1;
 }
