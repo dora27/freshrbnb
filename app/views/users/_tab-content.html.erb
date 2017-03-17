@@ -15,7 +15,7 @@
             <div class="wrapper-plant-infos container-fluid">
               <div class="row">
                 <div class="col-lg-3 no-padding">
-                  <%= link_to plant_path do %>
+                  <%= link_to plant_path(plant) do %>
                   <%= cl_image_tag plant.photo.path, width:150, height:150, crop: :fill, class: "img-circle" %>
                   <% end %>
                 </div>
@@ -51,7 +51,9 @@
             <div class="wrapper-plant-infos container-fluid">
               <div class="row">
                 <div class="col-lg-3 no-padding">
+                  <%= link_to plant_booking_path(plant) do %>
                   <%= cl_image_tag plant.photo.path, width:150, height:150, crop: :fill, class: "img-circle" %>
+                  <% end %>
                 </div>
                 <div class="col-lg-9 no-padding">
                   <h1><%= plant.name %></h1>
