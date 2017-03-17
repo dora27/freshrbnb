@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20170317100135) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,18 +31,14 @@ ActiveRecord::Schema.define(version: 20170317100135) do
   end
 
   create_table "bookings", force: :cascade do |t|
-
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "plant_id"
     t.integer  "user_id"
     t.string   "pick_up"
     t.string   "bring_back"
-
     t.string   "message"
     t.string   "status",     default: "Pending", null: false
-
     t.index ["plant_id"], name: "index_bookings_on_plant_id", using: :btree
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
   end
