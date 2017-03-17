@@ -59,7 +59,7 @@ Fresh Rbnb - <%= @plant.name %>
       <div class="plant-reviews">
         <h1> Reviews </h1>
         <% @plant.reviews.each do |review| %>
-        <p><%= @user.first_name%> <%= @user.last_name%> <%= review.rate %></p>
+        <p><%= review.user.first_name%> <%= review.user.last_name%> <%= review.rate %></p>
         <p><%= review.description%></p>
         <% end %>
         <%= link_to "Comment", new_plant_review_path(@plant) , class: "btn-treehouse" %>
