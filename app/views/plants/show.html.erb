@@ -1,126 +1,100 @@
 <div class="container navbar-marged no-padding ">
   <div class="row">
     <div class="col-lg-4">
-    <% if @plant.photo %>
-      <%= cl_image_tag @plant.photo.path, width: 400, height: 400%>
-    <% end %>
+      <div class="plant-aside" style="background-image: url('<%= cl_image_path(@plant.photo.path, width: 500, height: 500, crop: :fill)%>');">
+      </div>
+
     </div>
-    <div class="col-lg-5">
+
+
+
+
+
+    <div class="col-lg-4">
       <div class="wrapper_plant_infos no-padding">
         <div class="row">
-          <div class="col-lg-12">
             <h3 class="plant-title text-center">
               <%= @plant.name  %> - <%= "#{@plant.price}€"%>
             </h3>
-          </div>
         </div>
-
         <div class="row">
-          <div class="col-lg-6">
-        <br>
-        <p class="fa fa-arrows-v" aria-hidden="true" icon-large>  <%= @plant.height + "cm" %>
-        </p>
-        <br>
-        <p class="fa fa-book" aria-hidden="true">  <%= @plant.description %></p>
-        <br>
-        <p class="fa fa-map-marker" aria-hidden="true">  <%= @plant.location %> </p>
-        <hr>
-
-            <!-- <p id="status">
-            <em>Status:</em>
-            <% if @plant.status == "Available" %>
-              <span id="available"><%= @plant.status %></span>
-            <% else %>
-              <span id="rented"><%= @plant.status %></span>
-            <% end %>
-            </p> -->
-          </div>
+          <br>
+          <p class="fa fa-arrows-v" aria-hidden="true" icon-large>  <%= @plant.height + "cm" %>
+          </p>
+          <br>
+          <p class="fa fa-book" aria-hidden="true">  <%= @plant.description %></p>
+          <br>
+          <p class="fa fa-map-marker" aria-hidden="true">  <%= @plant.location %> </p>
+          <hr>
         </div>
-
         <div class="row">
-          <div class="col-lg-12 text-center">
-           <% if @plant.user.photo %>
-              <%= cl_image_tag @plant.user.photo.path, height: 50, width: 50, crop: :fill,  class: "card-user avatar-very-large" %>
+          <div class="avatar text-center">
+             <% if @plant.user.photo %>
+                <%= cl_image_tag @plant.user.photo.path, height: 50, width: 50, crop: :fill,  class: "card-user avatar-large" %>
             <% end %>
           </div>
-          <div class="col-lg-12 text-center">
-          <% if @plant.user.first_name && @plant.user.last_name %>
+          <div class="user-names text-center">
+            <% if @plant.user.first_name && @plant.user.last_name %>
               <h4><%= @plant.user.first_name + " " + @plant.user.last_name %> </h4>
             <% end %>
           </div>
-          <div>
-
+        </div>
+        <div class="row">
+          <div class="plant-reviews">
+            <h4> Reviews </h4>
+              <% @plant.reviews.each do |review| %>
+                <div class="review-comment">
+                  <p><% review.rate.to_i.times do |t| %>
+                      <i class="fa fa-star"></i>
+                    <% end %>
+                    <b> <%= review.user.first_name %> <%= review.user.last_name%> </b>
+                  </p>
+                  <p>Description: <%= review.description%></p>
+                </div>
+              <% end %>
+              <%= link_to "Comment", new_plant_review_path(@plant) , class: "btn btn-treehouse" %>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-4">
      <div class="map-plant">
-        <div id="map" style="width: 100%; height: 270px;"></div>
-          <% content_for(:after_js) do %>
-            <%= javascript_tag do %>
-            $(document).ready(function() {
-            var handler = Gmaps.build('Google');
-            handler.buildMap({ internal: { id: 'map' } }, function() {
-            markers = handler.addMarkers(<%= raw @hash.to_json %>);
-            handler.bounds.extendWith(markers);
-            handler.fitMapToBounds();
-            if (markers.length == 0) {
-              handler.getMap().setZoom(2);
-            } else if (markers.length == 1) {
-              handler.getMap().setZoom(14);
-              }
-            });
-          });
-          <% end %>
-         <% end %>
-       </div>
-      <div style= "height:78vh width:120vh">
+       <div style= "height:78vh width:120vh">
         <div class="form-book">
         <%= simple_form_for [@plant, @booking] do |f| %>
 
 
-          <%= f.text_field :pick_up, placeholder: "dd/mm/yyyy",class: 'datepicker' %>
-          <%= f.text_field :bring_back, placeholder: "dd/mm/yyyy", class: 'datepicker' %>
-          <%= f.text_area :message, :cols => "16", :rows => "3" %>
+          <%= f.input :pick_up, as: :string, placeholder: "dd/mm/yyyy", input_html: {class: 'datepicker'} %>
+          <%= f.input :bring_back, as: :string, placeholder: "dd/mm/yyyy", input_html:{class: 'datepicker'} %>
+          <%= f.input :message, :cols => "16", :rows => "3" %>
           <%= f.submit "Book", class: "btn-treehouse"%>
         <% end %>
       </div>
     </div>
-
   </div>
 </div>
+  </div>
 
-
-
-
-
-      <div class="plant-reviews">
-        <h1> Reviews </h1>
-        <% @plant.reviews.each do |review| %>
-        <p><%= review.user.first_name%> <%= review.user.last_name%> <%= review.rate %></p>
-        <p><%= review.description%></p>
-        <% end %>
-        <%= link_to "Comment", new_plant_review_path(@plant) , class: "btn-treehouse" %>
-      </div>
-    </div>
-
-
-         <div class="share">
-        <div class="share-links text-center">
-        <br>
-          <a href="#" class="share-link bg-facebook">
-            <i class="fa fa-facebook"></i>
-          </a>
-          <a href="#" class="share-link bg-twitter">
-            <i class="fa fa-twitter"></i>
-          </a>
-          <a href="#" class="share-link bg-email">
-            <i class="fa fa-envelope-o"></i>
-          </a>
-        </div>
-      </div>
     </div>
   </div>
 </div>
 
+<div id="map" style="width: 100%; height: 270px;"></div>
+  <% content_for(:after_js) do %>
+    <script>
+      $(document).ready(function() {
+        var handler = Gmaps.build('Google');
+        handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+          }
+        });
+      });
+    </script>
+ <% end %>
+</div>
